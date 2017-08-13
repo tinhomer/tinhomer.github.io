@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html class="full-height">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="//cdn.bootcss.com/bulma/0.4.1/css/bulma.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  
+  <title>node-upload | Tinhome&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="基于form的文件上传(nodejs) app.js12345678// 1.导入模块var express = require(&apos;express&apos;);//创建express应用服务器   --appvar app = express();var upload = require(&apos;./routes/upload&apos;);// 2.在app.js文件中定义访问地址app.use(&apos;/upload&apos;,">
+<meta name="keywords" content="node,vue">
+<meta property="og:type" content="article">
+<meta property="og:title" content="node-upload">
+<meta property="og:url" content="http://yoursite.com/2017/08/13/node-upload/index.html">
+<meta property="og:site_name" content="Tinhome&#39;s Blog">
+<meta property="og:description" content="基于form的文件上传(nodejs) app.js12345678// 1.导入模块var express = require(&apos;express&apos;);//创建express应用服务器   --appvar app = express();var upload = require(&apos;./routes/upload&apos;);// 2.在app.js文件中定义访问地址app.use(&apos;/upload&apos;,">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:image" content="http://yoursite.com/images/uploadImg.png">
+<meta property="og:updated_time" content="2017-08-13T15:11:46.745Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="node-upload">
+<meta name="twitter:description" content="基于form的文件上传(nodejs) app.js12345678// 1.导入模块var express = require(&apos;express&apos;);//创建express应用服务器   --appvar app = express();var upload = require(&apos;./routes/upload&apos;);// 2.在app.js文件中定义访问地址app.use(&apos;/upload&apos;,">
+<meta name="twitter:image" content="http://yoursite.com/images/uploadImg.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Tinhome&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/css/nav.css">
+<link rel="stylesheet" href="/css/layout.css">
+  
+
+</head>
+
+<body>
+  <header id="navbar" class="overflow-hidden">
+  <div class="container">
+    <nav class="nav">
+         <div class="nav-left">
+            <a href="/" class="nav-item" style="font-size: 20px;">
+              <span class="logo">Tinhome💋</span>'s Blog
+            </a>
+         </div>
+        <div class="nav-center is-hidden position-relative" id="search_container">
+            <div class="nav-item full-width full-height">
+                <i class="fa fa-search has-padding" aria-hidden="true"></i>
+                <input type="text" id="search_input" class="search-input full-height full-width" placeholder="Search post" autofocus>
+                <i id="close_search" class="fa fa-times" aria-hidden="true"></i>
+            </div>
+            <div id="search_result"></div>
+        </div>
+        <div class="nav-right nav-menu">
+            <a class="nav-item" id="search">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </a>
+            
+            <a class="nav-item" href="/">
+                主页
+            </a>
+            
+            <a class="nav-item" href="/works">
+                文档
+            </a>
+            
+        </div>
+        <span class="nav-toggle" id="navMenuDropdown">
+            <span></span>
+            <span></span>
+            <span></span>
+        </span>
+        <div class="navbar-menu position-absolute full-width content-box is-hidden-desktop is-flex flex-column center" style="top: 100%;">
+            
+            <a class="nav-item flex-1" href="/">
+                主页
+            </a>
+            
+            <a class="nav-item flex-1" href="/works">
+                文档
+            </a>
+            
+        </div>
+    </nav>
+  </div>
+</header>
+
+  <div id="main-wrap" class="position-relative" style="margin-top: 55px;">
+      <div class="main-inner-content">
+          <!--博文页面-->
+
+<style>
+    .header-box {
+        height: 370px;
+        filter: blur(10px);
+        background-size: cover;
+        background-color: lightsteelblue;
+    }
+
+    .post-box {
+        padding: 15px;
+        padding-top: 60px;
+        min-height: 80vh;
+        margin-top: -200px;
+        border-radius: 4px;
+        background-color: rgba(255,255,255,.8);
+    }
+
+    .post-avatar {
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+    }
+
+    .flow-chart {
+        text-align: center;
+    }
+
+    img[alt="post-cover"] {
+        display: none;
+    }
+</style>
+<header>
+    <div id="header_box" class="header-box"></div>
+</header>
+<section>
+    <div class="container post-box">
+        <div class="content post-title is-flex center flex-column" style="margin-bottom: 70px; overflow: auto;">
+            <h1 class="has-text-centered" style="padding-bottom: 10px; border-bottom: 3px solid #fff">
+                <strong>node-upload</strong>
+            </h1>
+            
+            <div class="is-flex align-center">
+                <img class="post-avatar" src="/img/avatar.jpg">
+                <span style="padding:0 10px;"> <span class="sub-title">By</span> Tinhome💋</span>
+                <span class="post-date sub-title">at: 2017-08-13</span>
+            </div>
+            
+                <div>
+                    
+                         <a class="tag is-post-tag" href="/tags/node-vue/">node,vue</a>
+                    
+                </div>
+            
+        </div>
+        <div class="content" style="overflow: auto">
+            <h1 id="基于form的文件上传-nodejs"><a href="#基于form的文件上传-nodejs" class="headerlink" title="基于form的文件上传(nodejs)"></a>基于form的文件上传(nodejs)</h1><p><img src="/images/uploadImg.png" alt="上传效果" title="上传效果图片"></p>
+<p>app.js<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 1.导入模块</span></div><div class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</div><div class="line"><span class="comment">//创建express应用服务器   --app</span></div><div class="line"><span class="keyword">var</span> app = express();</div><div class="line"><span class="keyword">var</span> upload = <span class="built_in">require</span>(<span class="string">'./routes/upload'</span>);</div><div class="line"></div><div class="line"><span class="comment">// 2.在app.js文件中定义访问地址</span></div><div class="line">app.use(<span class="string">'/upload'</span>, upload);</div></pre></td></tr></table></figure></p>
+<p>upload.js<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</div><div class="line"><span class="keyword">var</span> router = express.Router();</div><div class="line"><span class="comment">// 导入nodejs的内置path对象</span></div><div class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</div><div class="line"><span class="comment">// 导入nodejs的内置fileSystem对象</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> fs  = <span class="built_in">require</span>(<span class="string">'fs'</span>);</div><div class="line"><span class="keyword">var</span> formidable = <span class="built_in">require</span>(<span class="string">'formidable'</span>);</div><div class="line"></div><div class="line">router.post(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>) </span>&#123;</div><div class="line">    <span class="comment">// 创建一个表单对象</span></div><div class="line">    <span class="keyword">var</span> form = <span class="keyword">new</span> formidable.IncomingForm();</div><div class="line">    </div><div class="line">    <span class="comment">// 指定我们希望允许用户在单个请求中上传多个文件</span></div><div class="line">    form.multiples = <span class="literal">true</span>;</div><div class="line">    </div><div class="line">    <span class="comment">// 定义存储文件的目录</span></div><div class="line">    form.uploadDir = path.join(__dirname, <span class="string">'..'</span>, <span class="string">'/uploads'</span>);</div><div class="line">    </div><div class="line">    <span class="comment">// 监听文件上传成功</span></div><div class="line">    form.on(<span class="string">'file'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">filed, file</span>)</span>&#123;</div><div class="line">        <span class="comment">// 每当一个文件上传成功，重新命名为它的原始名称</span></div><div class="line">        fs.rename(file.path, path.join(form.uploadDir, file.name));</div><div class="line">    &#125;);</div><div class="line">    </div><div class="line">    <span class="comment">// 监听错误</span></div><div class="line">    form.on(<span class="string">'error'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err</span>)</span>&#123;</div><div class="line">        <span class="built_in">console</span>.error(err);</div><div class="line">    &#125;);</div><div class="line">    </div><div class="line">    <span class="comment">// 监听所有文件上传完成之后，向客户端发送响应</span></div><div class="line">    form.on(<span class="string">'end'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        res.json(&#123;</div><div class="line">            message: <span class="string">'success'</span></div><div class="line">        &#125;);</div><div class="line">    &#125;);</div><div class="line">    </div><div class="line">    <span class="comment">// 解析包含表单数据传入请求</span></div><div class="line">    form.parse(req);</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = router;</div></pre></td></tr></table></figure></p>
+<p> #vue<br> main.js<br> <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 在程序入口中导入组件以及样式</span></div><div class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></div><div class="line"><span class="comment">// 导入UI组件</span></div><div class="line"><span class="keyword">import</span> ElementUI <span class="keyword">from</span> <span class="string">'element-ui'</span></div><div class="line"><span class="comment">// 导入UI样式</span></div><div class="line"><span class="keyword">import</span> <span class="string">'element-ui/lib/theme-default/index.css'</span></div><div class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">'./App'</span></div><div class="line"><span class="keyword">import</span> router <span class="keyword">from</span> <span class="string">'./router'</span></div><div class="line"><span class="comment">// 使用UI组件</span></div><div class="line">Vue.use(ElementUI)</div><div class="line">Vue.config.productionTip = <span class="literal">false</span></div><div class="line"></div><div class="line"><span class="comment">/* eslint-disable no-new */</span></div><div class="line"><span class="keyword">new</span> Vue(&#123;</div><div class="line">  el: <span class="string">'#app'</span>,</div><div class="line">  router,</div><div class="line">  template: <span class="string">'&lt;App/&gt;'</span>,</div><div class="line">  components: &#123; App &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p> upload.vue<br> <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">el-upload</span></span></div><div class="line"><span class="tag">      <span class="attr">class</span>=<span class="string">"upload-demo"</span></span></div><div class="line"><span class="tag">      <span class="attr">drag</span></span></div><div class="line"><span class="tag">      <span class="attr">action</span>=<span class="string">"http://localhost:3000/upload"</span></span></div><div class="line"><span class="tag">      <span class="attr">:on-preview</span>=<span class="string">"preview"</span></span></div><div class="line"><span class="tag">      <span class="attr">multiple</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"el-icon-upload"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"el-upload__text"</span>&gt;</span>将文件拖到此处，或<span class="tag">&lt;<span class="name">em</span>&gt;</span>点击上传<span class="tag">&lt;/<span class="name">em</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"el-upload__tip"</span> <span class="attr">slot</span>=<span class="string">"tip"</span> &gt;</span>只能上传jpg/png文件，且不超过500kb<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">el-upload</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div></pre></td></tr></table></figure></p>
+
+        </div>
+        <div class="post-reply">
+            
+                <!-- 来必力City版安装代码 -->
+                <div id="lv-container" data-id="city" data-uid="MTAyMC8zMDAwMy82NTY4">
+                    <script type="text/javascript">
+                        (function(d, s) {
+                            var j, e = d.getElementsByTagName(s)[0];
+
+                            if (typeof LivereTower === 'function') { return; }
+
+                            j = d.createElement(s);
+                            j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                            j.async = true;
+
+                            e.parentNode.insertBefore(j, e);
+                        })(document, 'script');
+                    </script>
+                    <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+                </div>
+                <!-- City版安装代码已完成 -->
+            
+            
+        </div>
+    </div>
+</section>
+<script>
+    // 获取第一张图, 用以当封面背景图
+    var img = document.querySelectorAll('img')[1]
+
+    if (img) {
+        var header_box = document.querySelector('#header_box')
+        header_box.style.backgroundImage = 'url('+ img.src +')'
+    }
+</script>
+      </div>
+  </div>
+  <style>
+  #footer {
+    min-height: 10vh;
+    background: black;
+    color: #fff;
+  }
+
+  #footer a {
+    color: #e1e1e1;
+  }
+</style>
+<footer id="footer" class="has-text-centered is-flex center">
+  <div class="container has-padding">
+    <div>
+      <div>
+        <!--请您保留作者署名, 主题制作来之不易-->
+        Theme by <a href="http://haojen.github.io/">Haojen Ma</a>
+        <br>
+        Copyright © John Doe 2017
+        <br>
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/search_core.js"></script>
+<script src="/js/script.js"></script>
+
+</body>
+</html>
